@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import fi.hh.sw20.Bookstore.domain.Book;
 import fi.hh.sw20.Bookstore.domain.BookRepository;
+import fi.hh.sw20.Bookstore.domain.Category;
+import fi.hh.sw20.Bookstore.domain.CategoryRepository;
 
 
 
@@ -22,11 +24,15 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository bookRepository) {
+	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository) {
 		return (args) -> {
 			log.info("save a couple of new interesting books");
-			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "1232323-21"));
-			bookRepository.save(new Book("Animal Farm", "George Orwell", 1945, "2212343-5"));	
+			categoryRepository.save(new Category("Drama"));
+			categoryRepository.save(new Category("Fantasy"));
+			categoryRepository.save(new Category("Science fiction"));
+			
+			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "1232323-21",0.0, categoryRepository.findByName("Drama").get(0)));
+			bookRepository.save(new Book("Animal Farm", "George Orwell", 1945, "2212343-5",0.0, categoryRepository.findByName("Drama").get(0)));	
 			
 			log.info("fetch all students");
 			for (Book book : bookRepository.findAll()) {
