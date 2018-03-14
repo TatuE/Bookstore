@@ -10,5 +10,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 public interface BookRepository extends CrudRepository<Book, Long> {
 	
 	List<Book> findById(@Param("id") long id);
+	List<Book> findByAuthor(String author);
+	List<Book> findByTitle(String title);
 	
 }
