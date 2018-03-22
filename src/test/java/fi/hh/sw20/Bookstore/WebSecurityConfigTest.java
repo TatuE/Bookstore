@@ -8,18 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import fi.hh.sw20.Bookstore.webcontrol.BookController;
-
+import fi.hh.sw20.Bookstore.webcontrol.UserDetailServiceBookstore;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BookstoreApplicationTests {
+public class WebSecurityConfigTest {
 	
 	@Autowired
-	private BookController controller;	
-
+	private UserDetailServiceBookstore userDetailService;
+	
 	@Test
 	public void contextLoads() throws Exception {
-		assertThat(controller).isNotNull();		
+		assertThat(userDetailService).isNotNull();
 	}
+
 }

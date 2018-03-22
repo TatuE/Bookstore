@@ -25,6 +25,11 @@
 			<label for="price">Book price(If not set, leave empty)</label>
 			<input type="text" id="price" th:field="*{price}"/>
 			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="categorylist">Category</label>
+			 <select id="categorylist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${category}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>			
+			<div style="clear: both; display: block; height: 10px;"></div>
 			<input type="submit" value="Save book edit"></input>
 		</form>
 	</div>
